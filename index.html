@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess The Number</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/my-styles.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <!-- Start Main Content -->
+    <div class="container">
+      <div class="row ft">
+        <div class="col-sm-12 ft-copy">
+          <h1 class="text-center">Guess The Number</h1>
+        </div>
+      </div> <!-- End Content -->
+
+      <!-- Panel -->
+      <div class="panel panel-default ">
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-1">
+            <form>
+              <p><strong>Enter a Number From 1-100</strong></p>
+              <label class="sr-only">Guess</label>
+              <input class="form-control guess-txt" type="text" placeholder="For example, 3">
+              <button class="btn btn-submit" type="submit">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </button>
+            </form>
+          </div>
+          <div class="col-sm-5">
+            <p><strong>Remaining Guesses: 5</strong></p>
+            <a class="btn btn-default btn-lg" href="#">Give Me A Hint</a>
+            <a class="btn btn-default btn-lg" href="#">Play Again</a>
+          </div>
+        </div>
+      </div><!-- End panel -->
+
+      <div class="row ft">
+        <div class="col-sm-12 ft-copy">
+          <h2 class="text-center">[Hot/Cold Message]</h2>
+        </div>
+      </div>
+    
+    </div><!-- End Main Content -->
+  </body>
+</html>
