@@ -8,7 +8,7 @@ h1 {
 	font-size: 5em;
 	color: #5f5d60;
 }
-h2, h3 {
+h2 {
 	font-size: 2em;
 	color: #5f5d60;
 	margin-bottom: 16px;
@@ -23,19 +23,6 @@ p {
 strong {
 	color: #5f5d60;
 }
-.navbar-text {
-	font-weight: bold;
-	margin-right: 0;
-}
-.lead {
-	color: #d5c1f2;
-	margin-bottom: 70px;
-}
-.lead:nth-of-type(2) {
-	font-size: initial;
-	margin-bottom: 20px;
-}
-
 
 /* Layout
 ================================= */
@@ -56,6 +43,7 @@ strong {
 	padding: 36px 0;
 	margin: 80px 0 12px 0;
 }
+
 
 /* Form
 ================================= */
@@ -78,7 +66,6 @@ strong {
 /* Buttons
 ================================= */
 
-
 .btn-default {
 	border-width: 2px;
 	border-color: inherit;
@@ -97,106 +84,4 @@ strong {
 	background-color: #ccc;
 	color: #f7f7f7;
 	border-color: #ccc;
-}
-
-
-/* Jumbotron
-================================= */
-
-.jumbotron {
-	background-image: url('../img/main-bg.png');
-	background-repeat: no-repeat;
-	background-position:  200% 100%;
-	padding: 200px 0 140px 0;
-	margin-bottom: 70px;
-}
-.device {
-	width: 345px;
-	height: 589px;
-	background: url('../img/device-hero.png') no-repeat;
-}
-
-
-/* Logos & Icons
-================================= */
-
-.main-logo {
-	width: 124px;
-	height: 34px;
-	margin-top: 22px;
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	background: url('../img/main-logo.png') no-repeat;
-	background-size: 100%;
-}
-.ft-icon {
-	width: 94%;
-	height: 196px;
-	position: relative;
-	background: #8c73b0 url('../img/main-bg.png') no-repeat 270px -180px;
-	background-size: 140%;
-}
-.ft-icon.friends {
-	background-position: -500px 0px;
-}
-.ft-icon.cloud {
-	background-position: 260px 0px;
-}
-.ft-icon:before {
-	content: "";
-	display: block;
-	position: absolute;
-	width: 164px;
-	height: 102px;
-  	top: 0;
-  	right: 0;
-  	bottom: 0;
-  	left: 0;
-	margin: auto;
-	background: url('../img/feature-icons.png') no-repeat;
-	background-size: 100%;
-}
-.friends:before {
-	background-position: 0 -105px;
-}
-.cloud:before {
-	background-position: 0 -210px;
-}
-
-
-/* Media Queries
-================================= */
-
-@media (max-width: 991px) {
-	.jumbotron {
-		padding-top: 120px;
-		padding-bottom: 20px;
-		background-position: 10% 10%;
-	}
-	.ft-copy {
-		padding-top: 12px;
-	}
-	.ft-copy p {
-		width: auto;
-	}
-}
-@media (max-width: 767px) {
-	.navbar {
-		min-height: 60px;
-	}
-	.main-logo {
-		width: 82px;
-		margin-top: 20px;
-	}
-	.jumbotron {
-		padding-top: 80px;
-		margin-bottom: 32px;
-	}
-	.lead {
-		margin-bottom: 40px;
-	}
-	.ft {
-		margin-bottom: 16px;
-	}
 }
