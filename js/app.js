@@ -6,132 +6,145 @@ $(document).ready(function(){
 
 function newGame(){
 	var answer = Math.floor((Math.random() * 100) + 1);
-	console.log("Answer: " + answer);
-
+	console.log("answer: " + answer);
 	var guesses = [];
 	var guessesLeft = 5;
-	var messageBank = [];
+	var hintToggle = 1;
+	var playing = true;
+	var curGuess = 0;
+	var curMessage = "";
+
+	//Reset guesses left to 5.
+	$('#remaining').text("Remaining Guesses: " + guessesLeft);
 
 	//watch for click on the arrow
 	$('form').on('click', 'button', function() {
 
-		//store what's in the text field as current guess
-		var curGuess = +$('form').find('input').val();
+		//Prevent page from reloading on button click
+		event.preventDefault();
 
-		//make sure it's a number b/t 0-100
-		if ((!isNaN(curGuess)) && (curGuess>=0) && (curGuess<=100)) { 
+		if (playing) {
 
-			console.log("curGuess: " + curGuess);
+			//Store what's in the text field as current guess
+			curGuess = +$('form').find('input').val();
 
-			//Add guess to array
-			guesses.push(curGuess);
-			console.log("guesses: " + guesses);
+			//make sure it's a number b/t 0-100
+			if ((!isNaN(curGuess)) && (curGuess>=0) && (curGuess<=100)) { 
 
-			//Decrease guessesLeft by 1
-			guessesLeft--;
-			$('#remaining').text("Remaining Guesses: " + guessesLeft);
-			console.log("Guesses left: " + guessesLeft);
+				//Add guess to array
+				guesses.push(curGuess);
+				console.log(guesses);
 
-			//See if they got the answer
-			if (curGuess === answer) {
-				alert("You win!");
-				//Put this in curMessage?
-				//Prompt: You Win! play again?
-			}
-			else { //if user does not guess the right answer
+				//Decrease guessesLeft by 1
+				if (playing) {
+					guessesLeft--;
+					$('#remaining').text("Remaining Guesses: " + guessesLeft);
+				};			
 
-				var curMessage = ""; //This string will store all important info
-
-				if (curGuess < answer) {
-					curMessage += "Guess Higher";
+				//See if they got the answer
+				if (curGuess === answer) {
+					curMessage = "You guessed the number! Great Job!";
+					playing = false;
+					setInterval(function(){
+						$("#divToBlink").toggleClass("backgroundGreen");
+					},500)
 				}
-				else if (curGuess > answer) {
-					curMessage += "Guess Lower";
-				};
+				else { //if user does not guess the right answer
 
-				if (guessesLeft >= 4) { //if they've only guessed once
+					curMessage = "You Guessed " + curGuess + ". ";
+					var curDiff = Math.abs(answer - curGuess);
 
-				}	
-				else if (guessesLeft == 0) { //if they've run out of guesses
-					//Prompt or button: Game Over, play again?
-				}
-				//else, we need to see if they're closer than the previous guess
-				else {
-					var prevGuess = guesses[guesses.length-2];
-					if (Math.abs(answer - prevGuess) > Math.abs(answer - curGuess)) {
-						curMessage += "You're getting warmer";
+					if (curDiff < 5) { //they're very close
+						curMessage+= "You're super hot fire! "
+
+						if (curGuess < answer) {
+							curMessage += "Guess a little bit higher. ";
+						}
+						else if (curGuess > answer) {
+							curMessage += "Guess a little bit lower. ";
+						};
 					}
 					else {
-						curMessage += "You're getting colder";
-					};
+
+						if (guessesLeft < 4) { 
+							var prevGuess = guesses[guesses.length-2];
+							var prevDiff = Math.abs(answer - prevGuess);
+
+							//if they're not within 5 but they're closer than the last guess
+							if (prevDiff >= curDiff && prevGuess !=curGuess) {
+								curMessage += "You're getting warmer! ";
+							}
+							else { //if they're farther than before
+								curMessage += "You're getting colder! ";
+							};
+						}
+
+						if (curGuess < answer) {
+							curMessage += "Guess Higher. ";
+						}
+						else if (curGuess > answer) {
+							curMessage += "Guess Lower. ";
+						};
+					}
+					
+					//check if they've guessed that number before
+					for (var i=0; i<guesses.length-1; i++) {
+						if (curGuess == guesses[i]) {
+							console.log("jawn");
+							curMessage = "You already guessed that number, silly! ";
+						}
+					}
+
+					if (guessesLeft == 0) { //if they've run out of guesses
+						curMessage = "Oh no, you've run out of guesses! Click the button to play again!";
+						playing=false;
+					}
 				};
-			
 
-			//Add curMessage to messageBank
-			messageBank.push(curMessage);
-			//Show messageBank on page
-			console.log("messageBank: " + messageBank);
-			
+
+
+				//Make a new <li> with the current message in it
+				var finalMessage = $('<li>' + curMessage + '</li>');
+				finalMessage.prependTo($('#messagebank'));
+			}
+			else {
+				alert("Please enter a number between 0 and 100.");
 			};
-		}
-		else {
-			alert("Please enter a number between 0 and 100.");
-		};
 
-		//Reset form
-		$('form').find('input').val("");
+			//Reset form
+			$('form').find('input').val("");
+
+		}; //end of if-playing loop
 
 	});
-	//*************Do same when enter is pressed
+
+		
+		//watch for click on "Hint" Button
+		$('#hint').on('click', function() {
+
+			event.preventDefault();
+			//toggle showing the answer and the hint
+			if (hintToggle==1) {
+				$(this).text("It's " + answer + ". Shhhh..");
+				hintToggle=0;
+			}
+			else if (hintToggle==0) {
+				$(this).text("Give Me A Hint");
+				hintToggle=1;
+			};
+
+		});
+
+		//watch for click on "Play Again" Button
+		$('#playagain').on('click', function() {
+			location.reload(); 
+			//reloading the page is much simpler than resetting 
+			//all the variables or calling a new instance of newGame()
+		});
 
 
-	//watch for click on "Hint" Button
-	$('#hint').on('click', function() {
-		alert("Hint: The answer is " + answer);
-		//maybe make this a message?
-	});
-	//watch for click on "Play Again" Button
-	$('#playagain').on('click', function() {
-		console.log("Play again!");
-		//erase all messages
-		//reset guess counter
-		//newGame();
-	});
-
-	//The messageArray will need to bump older messages down
-	//Format should be [Guess: x ------ Your getting [warmer/colder]---- Try a [higher/lower] number]
 };
 
 newGame();
 
-
-/*
-The user should have an input field where they can submit a guess.
-
-After the user submits a guess, indicate whether their guess is 'hot' 
-or 'cold'. Let the user know if they need to guess higher or lower.
-
-Allow the user to guess only a certain amount of times. When they run 
-out of guesses let them know the game is over.
-
-Validate inputs that they are real numbers between 1-100.
-
-Create a new game button that resets the game.
-
-Store all of the guesses and create a way to check if the guess is a repeat.
-
-Track the user's previous guess. Let them know if they are getting “hotter” 
-or “colder” based on their previous guess.
-
-Create a button that provides the answer (Give me a Hint).
-
-Submit the guess by pressing enter or clicking the submit button.
-
-***After a user guesses a number keep a visual list of Hot and Cold answers 
-that the user can see.
-
-***Change the background color, add an image, or do something creative when 
-the user guesses the correct answer.
-
-*/
 });

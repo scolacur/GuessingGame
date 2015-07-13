@@ -18,14 +18,14 @@
       </div>
 
       <!-- Panel -->
-      <div class="panel panel-default ">
+      <div class="panel panel-default " id="divToBlink">
         <div class="row">
 
           <div class="col-sm-5 col-sm-offset-1">
             <form>
               <p><strong>Enter a Number From 1-100</strong></p>
               <label class="sr-only">Guess</label>
-              <input class="form-control guess-txt" type="text" placeholder="Whole numbers only, please.">
+              <input class="form-control guess-txt" type="text" placeholder="Good luck!">
               <button class="btn btn-submit" type="submit">
                 <span class="glyphicon glyphicon-arrow-right"></span>
               </button>
@@ -39,13 +39,14 @@
           </div>
 
         </div>
+
       </div>
       <!-- End panel -->
 
-      <div class="row ft">
-        <div class="col-sm-12 ft-copy">
-          <h2 class="text-center" id="messagebank">[Hot/Cold Message]</h2>
-        </div>
+      <div>
+        <ul class="ft" id="messagebank">
+          <!--New messages will be prepended here-->
+        </ul>
       </div>
     
     </div>

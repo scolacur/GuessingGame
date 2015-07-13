@@ -8,12 +8,6 @@ h1 {
 	font-size: 5em;
 	color: #5f5d60;
 }
-h2 {
-	font-size: 2em;
-	color: #5f5d60;
-	margin-bottom: 16px;
-	margin-top: 0;
-}
 p {
 	color: #b3aeb5;
 	line-height: 1.7;
@@ -22,6 +16,21 @@ p {
 }
 strong {
 	color: #5f5d60;
+}
+ul {
+	font-weight: 500;
+	margin-top: 16px;
+	color: #5f5d60;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+li {
+	font-size: 2em;
+	color: #5f5d60;
+	margin-bottom: 16px;
+	margin-top: 0;
+	text-align: center;
 }
 
 /* Layout
@@ -84,4 +93,22 @@ strong {
 	background-color: #ccc;
 	color: #f7f7f7;
 	border-color: #ccc;
+}
+
+/* Animation
+==================================*/
+
+.backgroundGreen{
+    background: #7FFFD4;
+}
+
+.backgroundRed{
+    background: #A52A2A;
+}
+
+#divToBlink{
+    -webkit-transition: background 1s ease-in-out;
+    -moz-transition:    background 1s ease-in-out;
+    -ms-transition:     background 1s ease-in-out;
+    transition:         background 1s ease-in-out;
 }
