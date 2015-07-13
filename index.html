@@ -12,7 +12,7 @@
     <!-- Start Main Content -->
     <div class="container">
       <div class="row ft">
-        <div class="col-sm-12 ft-copy">
+        <div class="col-sm-12 ft-copy"> 
           <h1 class="text-center">Guess The Number</h1>
         </div>
       </div>
@@ -20,32 +20,38 @@
       <!-- Panel -->
       <div class="panel panel-default ">
         <div class="row">
+
           <div class="col-sm-5 col-sm-offset-1">
             <form>
               <p><strong>Enter a Number From 1-100</strong></p>
               <label class="sr-only">Guess</label>
-              <input class="form-control guess-txt" type="text" placeholder="For example, 3">
+              <input class="form-control guess-txt" type="text" placeholder="Whole numbers only, please.">
               <button class="btn btn-submit" type="submit">
                 <span class="glyphicon glyphicon-arrow-right"></span>
               </button>
             </form>
           </div>
+
           <div class="col-sm-5">
-            <p><strong>Remaining Guesses: 5</strong></p>
-            <a class="btn btn-default btn-lg" href="#">Give Me A Hint</a>
-            <a class="btn btn-default btn-lg" href="#">Play Again</a>
+            <p><strong id="remaining">Remaining Guesses: 5</strong></p>
+            <a class="btn btn-default btn-lg" href="#" id="hint">Give Me A Hint</a>
+            <a class="btn btn-default btn-lg" href="#" id="playagain">Play Again</a>
           </div>
+
         </div>
       </div>
       <!-- End panel -->
 
       <div class="row ft">
         <div class="col-sm-12 ft-copy">
-          <h2 class="text-center">[Hot/Cold Message]</h2>
+          <h2 class="text-center" id="messagebank">[Hot/Cold Message]</h2>
         </div>
       </div>
     
     </div>
     <!-- End Main Content -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
   </body>
 </html>
