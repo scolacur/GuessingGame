@@ -6,7 +6,6 @@ $(document).ready(function(){
 
 function newGame(){
 	var answer = Math.floor((Math.random() * 100) + 1);
-	console.log("answer: " + answer);
 	var guesses = [];
 	var guessesLeft = 5;
 	var hintToggle = 1;
@@ -33,7 +32,6 @@ function newGame(){
 
 				//Add guess to array
 				guesses.push(curGuess);
-				console.log(guesses);
 
 				//Decrease guessesLeft by 1
 				if (playing) {
@@ -90,8 +88,7 @@ function newGame(){
 					//check if they've guessed that number before
 					for (var i=0; i<guesses.length-1; i++) {
 						if (curGuess == guesses[i]) {
-							console.log("jawn");
-							curMessage = "You already guessed that number, silly! ";
+							curMessage = "You already guessed that number, silly! Still counts though.";
 						}
 					}
 
