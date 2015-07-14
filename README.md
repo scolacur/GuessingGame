@@ -17,8 +17,9 @@ most recent guess is closer than the guess before that
 
 -Tells user if they repeated a guess, but still counts it
 
--If the user can't guess within 5 guesses, the game is over and they
-need to click the Play Again button
+-If the user can't guess within 5 guesses, the game is over, the input
+field won't work, and they need to click the Play Again button
+if they want to keep guessing
 
 -Show Hint button shows the answer
 
